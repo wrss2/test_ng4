@@ -1,20 +1,56 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{title}}!
-  </h1>
-  <img width="300" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<div class="wrapper">
+    <header role="banner"></header>
+    <div class="main">
+        <div class="top_follow">
+            <div class="share " (click)="onShare($event)"><i class="fa fa-share-square-o"></i></div>
+            <div class="person">
+                  <div class="photo"><img src="assets/images/avatar.jpg" alt=""></div>
+                  <div class="details">
+                    <h1 class="title">Harvey Specter  <span class="heart fa fa-heart-o" (click)="onHeart($event)"></span></h1>
+                    <h2 class="city">New York, USA</h2>
+                  </div>
+            </div>
+            <div class="numbers">
+                <div class="data">
+                    <div class="likes-wrap" *ngFor="let c of counts | async">
+                        <div class="likes">
+                              <h1>{{c.hearts}}</h1>
+                              <h3>Likes</h3>
+                          </div>
+                           <div class="line"></div>
+                        <div class="likes">
+                            <h1>{{c.following}}</h1>
+                            <h3>Following</h3>
+                        </div>
+                         <div class="line"></div>
+                        <div class="likes">
+                            <h1>{{c.followers}}</h1>
+                            <h3>Followers</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="folow-button" (click)="onFollow($event)">Follow</div>
+            </div>
+        </div>
+        <div class="content_follow">
 
+            <a href="#" class="comments" (click)="onHide($event)">Hide comments (353)</a>
+            <a href="#" class="sort" (click)="onSort($event)">sortuj</a>
+            <div class="posts">
+              <ul>
+              <li *ngFor="let d of data | async" class="collection-item avatar">
+                        <div class="wrapper-top">
+                              <img src="{{d.avatar}}" alt="">
+                              <span class="title_header">{{d.name}}</span>
+                              <span class="day">{{d.day}}</span>
+                          </div>
+                          <p>{{d.message}}</p>
+                      </li>
+              </ul>
+            </div>
+            <div class="wrapper-comment">
+                <input type="text" class="input_cm" (click)="onComment($event)" placeholder="Add a comment">
+            </div>
+        </div>
+    </div>
+</div>
