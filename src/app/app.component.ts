@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { DataService } from './app.service';
 // import { Data ,Data2 } from './data';
@@ -13,24 +13,20 @@ import { DataService } from './app.service';
   styleUrls: ['./app.component.scss'],
   providers: [DataService]
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   test = 'test ng4';
   data: Observable<Array<any>>;
   counts: Observable<Array<any>>;
-  dd: Array<any>;
+  constructor(private dataService: DataService) { }
 
-  constructor(private dataService: DataService) {
-    this.data = dataService.getData();
-    this.counts = dataService.getNumbers();
-   }
-
-
+ ngOnInit(){
+   this.data = this.dataService.getData();
+   this.counts = this.dataService.getNumbers();
+ }
   onHeart(event) {
-    // var like = parseInt($(".likes:first-child h1").text())+1;
-    // $(".likes:first-child h1").text(like);
+
     console.log("heart ");
-  //  this.counts.subscribe( hearts => console.log('z: ', hearts[0].hearts))
-  //  this.counts[0].hearts +=1;
+
  }
 
  onFollow(event) {
@@ -44,11 +40,21 @@ export class AppComponent {
 
 onHide(event) {
   console.log("hide ");
-
 }
 
 onComment(event) {
-  console.log("comment ");
+
+  if(event.keyCode == 13) {
+      console.log("comment ",event.target.value);
+      var value= {
+        "avatar": "assets/images/avatar.jpg",
+        "name": "Mike Ross 0",
+        "day": "0d",
+        "message": event.target.value
+      };
+
+
+  }
 
 }
 
@@ -56,5 +62,7 @@ onShare(event) {
   console.log("popup ");
 
 }
+
+
 
 }
