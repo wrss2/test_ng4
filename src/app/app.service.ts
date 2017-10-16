@@ -10,16 +10,13 @@ export class DataService {
   constructor(private http: Http) {}
 
   getData(): Observable<any> {
-
-
         return this.http.get('./assets/data/data.json')
           .map((res:Response) => res.json())
           .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
   }
 
+
   getNumbers(): Observable<any> {
-
-
         return this.http.get('./assets/data/numbers.json')
           .map((res:Response) => res.json())
           .catch((error:any) => Observable.throw(error.json().error || 'Server error'));

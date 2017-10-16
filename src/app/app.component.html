@@ -12,7 +12,7 @@
             </div>
             <div class="numbers">
                 <div class="data">
-                    <div class="likes-wrap" *ngFor="let c of counts | async">
+                    <div class="likes-wrap" *ngFor="let c of counts ">
                         <div class="likes">
                               <h1>{{c.hearts}}</h1>
                               <h3>Likes</h3>
@@ -34,11 +34,11 @@
         </div>
         <div class="content_follow">
 
-            <a href="#" class="comments" (click)="onHide($event)">Hide comments (353)</a>
+            <a href="#" class="comments"  (click)="onHide($event)">Hide comments (353)</a>
             <a href="#" class="sort" (click)="onSort($event)">sortuj</a>
-            <div class="posts">
+            <div class="posts" >
               <ul>
-              <li *ngFor="let d of data | async" class="collection-item avatar">
+              <li *ngFor="let d of data" class="collection-item avatar">
                         <div class="wrapper-top">
                               <img src="{{d.avatar}}" alt="">
                               <span class="title_header">{{d.name}}</span>
@@ -49,8 +49,9 @@
               </ul>
             </div>
             <div class="wrapper-comment">
-                <input type="text" class="input_cm" (keydown)="onComment($event)" placeholder="Add a comment">
+                <input type="text" class="input_cm" (keyup.enter)="onComment($event)" placeholder="Add a comment">
             </div>
         </div>
     </div>
 </div>
+<div [hidden]="!hide" class="popup"><div class="inner"><div class="close" (click)="onHidePopup($event)">x</div>{{location}}</div></div>
