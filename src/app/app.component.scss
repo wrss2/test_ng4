@@ -110,21 +110,10 @@ header{
     height: 25px;
 }
 
-
-
-
-
-
-
-
-
 .wrapper-comment{
   border-top: 1px solid #ebebeb;
   padding: 20px 25px 0 25px;
   margin-top: 10px;
-
-
-
     .input_cm{
       height: 40px;
       box-sizing: border-box;
@@ -139,16 +128,12 @@ header{
         color: #8298B9;
         letter-spacing: 0;
       }
-
       &:focus{
           border-bottom: 2px solid #DBE0E8 !important;
           -webkit-box-shadow: 0 1px 0 0 #DBE0E8 !important;
           box-shadow: 0 1px 0 0 #DBE0E8 !important;
       }
-
     }
-
-
 }
 
 .avatar img{
@@ -163,8 +148,6 @@ header{
         padding: 25px 20px 15px 20px;
         border-bottom: 1px solid #EBEBEB;
         width: 98%;
-
-
 
         &:first-child{
             padding-top: 0;
